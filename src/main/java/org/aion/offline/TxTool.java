@@ -58,16 +58,18 @@ public class TxTool {
 
     public static void main(String[] args) throws Throwable {
 
-        IAionAPI api = IAionAPI.init();
-        api.connect("tcp://127.0.0.1:8547");
+        if (6 == args.length) {
 
-        if (5 == args.length) {
-
+            IAionAPI api = IAionAPI.init();
             // We need the user to specify:
+
+            // Api URL
+            api.connect(args[0]);
+
 
             // PRIVATE KEY
             EdDSAPrivateKey privateKey = new EdDSAPrivateKey(
-                new PKCS8EncodedKeySpec(addSkPrefix(args[0])));
+                new PKCS8EncodedKeySpec(addSkPrefix(args[1])));
 
             byte[] publicKey = privateKey.getAbyte();
 
@@ -75,16 +77,16 @@ public class TxTool {
             addrBytes [0] = hexToByte("a0");
 
             // -TO
-            byte[] to = hexToBytes(args[1]);
+            byte[] to = hexToBytes(args[2]);
 
             // -VALUE
-            byte[] value = hexToBytes(args[2]);
+            byte[] value = hexToBytes(args[3]);
 
             // -DATA
-            byte[] data = hexToBytes(args[3]);
+            byte[] data = hexToBytes(args[4]);
 
             // -TYPE
-            byte type = hexToByte(args[4]);
+            byte type = hexToByte(args[5]);
 
             // Things we calculate:
 
@@ -165,7 +167,7 @@ public class TxTool {
             assertNotNull(hash);
             System.out.println(hash);
         } else {
-            System.err.println("Usage: Calling privateKey toAddress value data type");
+            System.err.println("Usage: Calling ApiUrl privateKey toAddress value data type");
             System.exit(1);
         }
     }
