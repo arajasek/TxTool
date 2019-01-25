@@ -12,7 +12,7 @@ Build the project
 
 Run the tool
 
-`./gradelw run --args "<url> <privateKey> <toAddress> <value> <data> <type>",
+`./gradelw run --args "<url> <privateKey> <toAddress> <value> <data> <type>"`,
 
 where `url` is the URL of the node accepting Java API requests
 `privateKey` is the private key of the account signing the transaction. This should be 32 bytes long, and should not start with 0x.
