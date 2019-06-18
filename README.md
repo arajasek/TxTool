@@ -24,4 +24,4 @@ where `url` is the URL of the node accepting Java API requests,
 
 `data` to be sent, as a hex string (no 0x),
 
-`type` of the transaction is `1` for FVM transactions, `f` for AVM.
+`type` of the transaction is `0x2` for AVM deployment transactions, `0x1` for all other.
